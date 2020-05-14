@@ -26,19 +26,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("MainActivity","Inside Click()");
+                Toast.makeText(MainActivity.this,"Button Click",Toast.LENGTH_LONG).show();
                 if(cbEnabled.isChecked()) {
-
-                    tvShow.setText("The discount is given." );
+                    double pay = calcPay(100, 20);
+                    tvShow.setText("The discount is given. You need to pay " + pay);
                 }
                 else {
-
-                    tvShow.setText("The discount is not given." );
+                    double pay = calcPay(100, 0);
+                    tvShow.setText("The discount is not given. You need to pay " + pay);
                 }
 
             }
         });
     }
 
-
+    private double calcPay(double price, double discount) {
+        double pay = price * (1-discount/100);
+        return pay;
+    }
 }
 
